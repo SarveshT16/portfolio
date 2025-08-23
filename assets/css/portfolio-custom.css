@@ -1,0 +1,97 @@
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    align-items: start;
+    gap: 5rem;
+    padding: 4rem 5rem;
+    max-width: 1800px; 
+    margin: 0 auto;
+    position: relative;
+}
+
+.portfolio-container .portfolio-box {
+    position: relative;
+    border-radius: 2rem;
+    border: 3px solid var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    transition: transform 0.5s ease;
+    z-index: 1;
+}
+
+.portfolio-container .portfolio-box:hover {
+    transform: translateY(-1rem) scale(1.03);
+    z-index: 2;
+}
+
+.portfolio-box img {
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* --- OVERLAY STYLES --- */
+.portfolio-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), var(--main-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem !important;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.portfolio-container .portfolio-box:hover .portfolio-layer {
+    opacity: 1;
+}
+
+.portfolio-layer h4 {
+    /* Reduced font size for the heading */
+    font-size: 2.2rem; 
+    margin-bottom: 1rem;
+}
+
+.portfolio-layer p {
+    /* Reduced font size for the paragraph */
+    font-size: 1.0rem;
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1680px) {
+    .portfolio-container {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-container {
+        grid-template-columns: minmax(320px, 1fr);
+        gap: 3rem;
+        padding: 2rem;
+    }
+    
+    .portfolio-container .portfolio-box:hover {
+        transform: translateY(-0.5rem) scale(1.02);
+    }
+
+    .portfolio-layer h4 {
+        font-size: 2rem;
+    }
+
+    .portfolio-layer p {
+        font-size: 1.3rem;
+    }
+}
